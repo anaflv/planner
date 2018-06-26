@@ -1,0 +1,83 @@
+Estrutura da grade
+1º quadrimestre
+BIS0005-15 – Bases computacionais da ciência
+BCS0001-15 – Base Experimental das Ciências Naturais
+BIK0102-15 – Estrutura da matéria
+BIS0003-15 – Bases matemáticas
+BIJ0207-15 - Bases Conceituais da Energia
+BIL0304-15 – Evolução e Diversificação da Vida na Terra
+ 
+2º quadrimestre
+BCM0504-15 – Natureza da informação
+BCJ0204-15 - Fenômenos Mecânicos
+BCN0404-15 - Geometria Analítica
+BCN0402-15 - Funções de uma Variável
+BCL0306-15 - Biodiversidade: Interação entre Organismos e Ambiente
+ 
+3º quadrimestre
+BCM0505-15 - Processamento da Informação
+BCJ0205-15 - Fenômenos Térmicos
+BCN0407-15 - Funções de Várias Variáveis
+BCL0307-15 - Transformações Químicas
+ 
+4º quadrimestre
+BCM0506-15- Comunicação e Redes
+BCJ0203-15 - Fenômenos Eletromagnéticos
+BIN0406-15 - Introdução à Probabilidade e à Estatística
+BCN0405-15 - Introdução às Equações Diferenciais Ordinárias
+BIR0004-15 - Bases Epistemológicas da Ciência Moderna
+ 
+5º quadrimestre
+BCK0103-15 - Física Quântica
+BCL0308-15 - Bioquímica: Estrutura, Propriedade e Funções de Biomoléculas.
+BIQ0602-15 - Estrutura e Dinâmica Social
+NHI2049-13 - Lógica Básica
+MCTA028-15 - Programação Estruturada
+ 
+6º quadrimestre
+BCK0104-15 - Interações Atômicas e Moleculares
+BIR0603-15 - Ciência Tecnologia e Sociedade
+MCTA006-13 - Circuitos Digitais
+MCTA001-13 - Algoritmos e Estruturas de Dados I
+MCTB019-13 - Matemática Discreta
+ 
+7º quadrimestre
+MCTA024-13 - Sistemas Digitais
+MCTA003-13 - Análise de Algoritmos
+MCTA018-13 - Programação Orientada a Objetos
+MCTB001-13 - Álgebra Linear
+MCTA009-13 - Computadores, Ética e Sociedade
+ 
+8º quadrimestre
+MCTA004-13 - Arquitetura de Computadores
+MCTA002-13 - Algoritmos e Estruturas de Dados II
+MCTA027-13 - Teoria dos Grafos
+MCTA005-13 - Banco de Dados
+MCTAO14-13 - Inteligência Artificial
+ 
+9º quadrimestre
+MCTA022-13 - Redes de Computadores
+MCTA026-13 - Sistemas Operacionais
+MCTA015-13 -Linguagens Formais e Autômata
+MCTA010-13 - Engenharia de Software
+BCS0002-15 - Projeto Dirigido
+Livre
+ 
+10º quadrimestre
+MCTA019-13 - Projeto de Graduação em Computação I
+MCTA025-13 - Sistemas Distribuídos
+MCTA007-13 - Compiladores
+MCTA016-13 - Paradigmas de Programação
+Opção limitada
+ 
+11º quadrimestre
+MCTA020-13 - Projeto de Graduação em Computação II
+MCTA008-13 - Computação Gráfica
+MCTA017-13 - Programação Matemática
+Opção Limitada
+ 
+12 º quadrimestre
+MCTA021-13 - Projeto de Graduação em Computação III
+MCTA023-13 - Segurança de Dados
+Opção Limitada
+Livre
