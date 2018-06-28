@@ -1,0 +1,20 @@
+.wrapper {
+    padding: 20px 70px 0;
+    display: block;
+    text-align: center;
+}
+
+.wrapper-2{
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 28px;
+}
+
+
+#start-button{
+  margin-top:40px;   
+}
