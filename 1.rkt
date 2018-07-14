@@ -1,6 +1,6 @@
 #lang racket
 
-;lista dummy
+;lista dummy de materias obrigatorias
 (define cs '(101 102 103))
 
 
@@ -12,6 +12,8 @@
     (cond [(null? l) l]
           [(= n 0) 0]
           [else 1])))
+
+
 
 
 ;ver se primeiro esta na lista
