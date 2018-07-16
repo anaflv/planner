@@ -3,10 +3,12 @@
 
 (require racket/trace)
 
+(provide indices-notas-F)
+
 ;lista dummy de materias obrigatorias
 (define cs '(101 102 103))
 
-(define cs2 '("BIJ0207-15" "BIL0304-15" "BIK0102-15" "BCS0001-15" "BIS0005-15" "BIS0003-15" "BCJ0204-15" "BCL0306-15" "BCN0404-15" "BCN0402-15" "BCM0504-15" "BCJ0205-15" "BCL0307-15" "BCN0407-15" "BCM0505-15" "BCJ0203-15" "BCN0405-15" "BIN0406-15")
+(define cs2 '("BIJ0207-15" "BIL0304-15" "BIK0102-15" "BCS0001-15" "BIS0005-15" "BIS0003-15" "BCJ0204-15" "BCL0306-15" "BCN0404-15" "BCN0402-15" "BCM0504-15" "BCJ0205-15" "BCL0307-15" "BCN0407-15" "BCM0505-15" "BCJ0203-15" "BCN0405-15" "BIN0406-15"))
   
 
 ;lista dummy de materias cursadas
