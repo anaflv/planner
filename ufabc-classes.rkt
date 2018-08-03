@@ -10,20 +10,17 @@
 
 
 
-
-
 (define taken '("a" "b" "BCK0103-15" "BCL0308-15" "BIQ0602-15" "BCK0104-15" "BIR0603-15" "BCS0002-15"))
+(define notas '(1 2 0 0 3 2))
+
 
 
 ;struct materia
 (struct ufabc-class (id code name))
 
 
-(ufabc-class  "123" "BCN0405-15" "Introdução às Equações Diferenciais Ordinárias")
+(ufabc-class  "123" "BCN0405-15" "Introdução às Equações Diferenciais Ordinárias") 
 
-
-;lista dummy de notas
-(define notas '(1 2 0 0 3 2))
 
 
 
@@ -78,13 +75,9 @@
 
 
 
-<<<<<<< HEAD
-=======
-(filter mandatory? taken)
+;(filter mandatory? taken)
 
 
-
->>>>>>> de2757fe0ef29500738ac18f6fb8047353919d99
 ;filtrar materias obrigatorias
 (define (filter-mandatory)
   ((lambda (x)
