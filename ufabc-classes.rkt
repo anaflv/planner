@@ -62,9 +62,6 @@
 
 
 
-
-
-
 ;retorna lista de matérias que nao tem nota f
 (define (remove-classes-grade-F c)
   (let loop ([i 0] [r '()] [g (indices-notas-F notas)] [c c])
@@ -86,7 +83,6 @@
 
 
 ;contar quantas matérias
-; (apenas base, funçao incompleta)
 (define (cc l)
   (let c ([n 0] [l l])
     (cond [(null? l) n]
@@ -104,10 +100,6 @@
 
 
 (filter mandatory? taken)
-
-
-
-
 
 
 
