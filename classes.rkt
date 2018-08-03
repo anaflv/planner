@@ -1,11 +1,20 @@
 #lang racket
 
 (provide  names)
+(provide bct)
+
+
+;obrigatorias bct
+(define bct '("BIJ0207-15" "BIL0304-15" "BIK0102-15" "BCS0001-15" "BIS0005-15" "BIS0003-15"
+                           "BCJ0204-15" "BCL0306-15" "BCN0404-15" "BCN0402-15" "BCM0504-15"
+                           "BCJ0205-15" "BCL0307-15" "BCN0407-15" "BCM0505-15" "BCJ0203-15"
+                           "BCN0405-15" "BIN0406-15" "BCM0506-15" "BIR0004-15" "BCK0103-15"
+                           "BCL0308-15" "BIQ0602-15" "BCK0104-15" "BIR0603-15" "BCS0002-15"))
 
 
 
 
-
+;nomes das matérias
 (define names (hash
 	"BIJ0207-15"	"Bases Conceituais da Energia"
 	"BIL0304-15"	"Evolução e Diversificação da Vida na Terra"
