@@ -15,15 +15,6 @@
 
 
 
-;struct materia
-(struct ufabc-class (id code name))
-
-
-(ufabc-class  "123" "BCN0405-15" "Introdução às Equações Diferenciais Ordinárias") 
-
-
-
-
 ;retorna indices de notas que nao sao f
 (define (indices-notas-F notas)
   (let loop ([i 0] [r '()] [l notas])
