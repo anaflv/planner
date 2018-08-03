@@ -42,9 +42,6 @@
 
 
 
-
-
-
 ;retorna lista de matérias que nao tem nota f
 (define (remove-classes-grade-F c)
   (let loop ([i 0] [r '()] [g (indices-notas-F notas)] [c c])
@@ -81,6 +78,13 @@
 
 
 
+<<<<<<< HEAD
+=======
+(filter mandatory? taken)
+
+
+
+>>>>>>> de2757fe0ef29500738ac18f6fb8047353919d99
 ;filtrar materias obrigatorias
 (define (filter-mandatory)
   ((lambda (x)
