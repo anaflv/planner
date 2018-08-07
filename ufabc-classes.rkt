@@ -8,8 +8,6 @@
 
 (provide indices-notas-F)
 
-
-
 (define taken '("a" "b" "BCK0103-15" "BCL0308-15" "BIQ0602-15" "BCK0104-15" "BIR0603-15" "BCS0002-15"))
 (define notas '(1 2 0 0 3 2))
 
@@ -30,6 +28,7 @@
 
 
 
+
 ;retorna lista de matérias que nao tem nota f
 (define (remove-classes-grade-F c)
   (let loop ([i 0] [r '()] [g (indices-notas-F notas)] [c c])
@@ -43,6 +42,19 @@
                   (append r (list (car c)))
                   (cdr g)
                   (cdr c))])))
+
+
+
+(define (print-names c)
+  (let loop ([c c] [r '()])
+    (cond
+      [(null? c) r]
+      [else (loop (cdr c)
+                  (append r (list
+                             (hash-ref names
+                                       (car c)
+                                       "N/a"))))])))
+
 
 
 
@@ -62,21 +74,23 @@
   (let f ([n n] [o bct])
     (cond [(null? o) #f]
           [(eq? (car o) n) #t]
+          [(eq? (hash-ref old-curriculum (car o) "0") n) #t]
           [else (f n (cdr o))])))
 
 
 
-;(filter mandatory? taken)
-
-
 ;filtrar materias obrigatorias
-(define (filter-mandatory)
+(define (filter-mandatory y)
   ((lambda (x)
      (filter mandatory? x))
-   taken))
+   y))
 
 
 
+(filter-mandatory classes-taken-dummy)
+                  
 
+(print-names
+       (filter-mandatory classes-taken-dummy))
 
 
