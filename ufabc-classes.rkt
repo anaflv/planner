@@ -44,7 +44,6 @@
                   (cdr c))])))
 
 
-
 (define (print-names c)
   (let loop ([c c] [r '()])
     (cond
@@ -53,7 +52,7 @@
                   (append r (list
                              (hash-ref names
                                        (car c)
-                                       "N/a"))))])))
+                                       (car c)))))])))
 
 
 
@@ -69,13 +68,22 @@
           [else (c (add1 n) (cdr l))])))
 
 
-;ver se matéria é obrigatoria
+;ver se matéria esta em obrigatorias bct
 (define (mandatory? n)
   (let f ([n n] [o bct])
     (cond [(null? o) #f]
           [(eq? (car o) n) #t]
           [(eq? (hash-ref old-curriculum (car o) "0") n) #t]
           [else (f n (cdr o))])))
+
+
+;ver se matéria esta em obrigatorias bcc
+(define (bcc-mandatory? n)
+  (let f ([n n] [o bcc-17])
+    (cond [(null? o) #f]
+          [(eq? (car o) n) #t]
+          [else (f n (cdr o))])))
+
 
 
 
@@ -86,11 +94,19 @@
    y))
 
 
+;filtrar materias obrigatorias
+(define (filter-mandatory-bcc y)
+  ((lambda (x)
+     (filter bcc-mandatory? x))
+   y))
 
-(filter-mandatory classes-taken-dummy)
-                  
+
 
 (print-names
        (filter-mandatory classes-taken-dummy))
+
+
+(print-names
+       (filter-mandatory-bcc classes-taken-dummy))
 
 
