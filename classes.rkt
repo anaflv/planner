@@ -1,7 +1,10 @@
 #lang racket
 
-(provide  names)
+(provide names)
 (provide bct)
+(provide optional-bcc)
+(provide classes-taken-dummy)
+(provide old-curriculum)
 
 
 ;obrigatorias bct
@@ -10,6 +13,138 @@
                            "BCJ0205-15" "BCL0307-15" "BCN0407-15" "BCM0505-15" "BCJ0203-15"
                            "BCN0405-15" "BIN0406-15" "BCM0506-15" "BIR0004-15" "BCK0103-15"
                            "BCL0308-15" "BIQ0602-15" "BCK0104-15" "BIR0603-15" "BCS0002-15"))
+
+;cursos 
+(define courses '( "BCT" "Engenharias" "Engenharia Aeroespacial" "Engenharia Ambiental"
+                          "Engenharia Biaomédica" "Engenharia de Energia" "Engenharia de Gestão"
+                          "Engenharia de Informação" "Engenharia de Instrumentação, Automação e Robótica"
+                          "Engenharia de Materiais"))
+
+(define bct-13 '("BCS0001-13"
+"BCS0002-15"
+"BIN0003-13"
+"BIR0004-13"
+"BIM0005-13"
+"BIK0102-13"
+"BCK0103-13"
+"BCK0104-13"
+"BCJ0205-13"
+"BIJ0207-13"
+"BCJ0208-13"
+"BCJ0209-13"
+"BIL0304-13"
+"BCL0306-13"
+"BCL0307-13"
+"BCL0308-13"
+"BCN0402-13"
+"BCN0404-13"
+"BCN0405-13"
+"BIN0406-13"
+"BCN0407-13"
+"BCM0504-13"
+"BCM0505-13"
+"BCM0506-13"
+"BIQ0602-13"
+"BIR0603-13"))
+
+
+(define classes-taken-dummy '(
+      "BIK0102-13"
+      "BIR0004-13"
+      "BCS0001-13"
+      "BIL0304-13"
+      "BIM0005-13"
+      "BIN0003-13"
+      "MCZC003-13"
+      "BCJ0208-13"
+      "BCL0306-13"
+      "BCM0504-13"
+      "BCN0402-13"
+      "BCN0404-13"
+      "BCJ0205-13"
+      "BCL0307-13"
+      "BCM0506-13"
+      "BCN0405-13"
+      "BCM0505-13"
+      "BIQ0602-13"
+      "BIR0603-13"
+      "NHZ4033-09"
+      "BCN0407-13"
+      "BIJ0207-13"
+      "BIN0406-13"
+      "ESTO002-13"
+      "ESTO008-13"
+      "MCTA009-13"
+      "ESTO005-13"
+      "ESZI003-13"
+      "BCL0308-13"
+      "MCTA006-13"
+      "MCTA018-13"
+      "BCK0103-15"
+      "BIJ0207-15"
+      "MCTA001-13"
+      "MCTB009-13"
+      "BCM0504-15"
+      "BCS0002-15"
+      "ESZI027-17"
+      "MCTA002-17"
+      "BCK0104-15"
+      "MCTA023-17"
+      "MCTA033-15"
+))
+
+;obrigatórias bcc
+(define optional-bcc '(
+   "MCZA030-13"
+   "MCTB009-13"
+   "MCZA001-13"
+   "MCZA006-13"
+   "MCZA019-13"
+   "MCZA08-13"
+   "MCZA017-13"
+   "MCZA012-13"
+   "MCZA018-13"
+   "MCZA016-13"
+   "MCZA029-13"
+   "MCZA007-13"
+   "MCZA010-3"
+   "MCZB027-13"
+   "MCZA022-13"
+   "MC7114"
+   "BC1510"))
+
+
+
+(define old-curriculum (hash
+"BIJ0207-15"	"BIJ0207-13"
+"BIL0304-15"	"BIL0304-13"
+"BIK0102-15"	"BIK0102-13"
+"BCS0001-15"	"BCS0001-13"
+"BIS0005-15"	"BIM0005-13"
+"BIS0003-15"	"BIN0003-13"
+"BCJ0204-15"	"BCJ0208-13"
+"BCL0306-15"	"BCL0306-13"
+"BCN0404-15"	"BCN0404-13"
+"BCN0402-15"	"BCN0402-13"
+"BCM0504-15"	"BCM0504-13"
+"BCJ0205-15"	"BCJ0205-13"
+"BCL0307-15"	"BCL0307-13"
+"BCN0407-15"	"BCN0407-13"
+"BCM0505-15"	"BCM0505-13"
+"BCJ0203-15"	"BCJ0209-13"
+"BCN0405-15"	"BCN0405-13"
+"BIN0406-15"	"BIN0406-13"
+"BCM0506-15"	"BCM0506-13"
+"BIR0004-15"	"BIR0004-13"
+"BCK0103-15"	"BCK0103-13"
+"BCL0308-15"	"BCL0308-13"
+"BIQ0602-15"	"BIQ0602-13"
+"BCK0104-15"	"BCK0104-13"
+"BIR0603-15"	"BIR0603-13"
+"BCS0002-15"	"BCS0002-15"
+))
+
+
 
 
 
@@ -961,4 +1096,32 @@
 	"ESZM032-17"	"Biomateriais"
 	"ESTO015-17"	"Mecânica dos Fluidos I"
 	"ESTO014-17"	"Termodinâmica Aplicada I"
+        "BCS0001-13"	"Base Experimental das Ciências Naturais"
+        "BCS0002-15"	"Projeto Dirigido"
+        "BIN0003-13"	"Bases Matemáticas"
+        "BIR0004-13"	"Bases Epistemológicas da Ciência Moderna"
+        "BIM0005-13"	"Bases Computacionais da Ciência"
+        "BIK0102-13"	"Estrutura da Matéria"
+        "BCK0103-13"	"Física Quântica"
+        "BCK0104-13"	"Interações Atômicas e Moleculares"
+        "BCJ0205-13"	"Fenômenos Térmicos"
+        "BIJ0207-13"	"Energia: Origens, Conversão e Uso"
+        "BCJ0208-13"	"Fenômenos Mecânicos"
+        "BCJ0209-13"	"Fenômenos Eletromagnéticos"
+        "BIL0304-13"	"Origem da Vida e Diversidade dos Seres Vivos"
+        "BCL0306-13"	"Transformações nos Seres Vivos e Ambiente"
+        "BCL0307-13"	"Transformações Químicas"
+        "BCL0308-13"	"Transformações Bioquímicas"
+        "BCN0402-13"	"Funções de Uma Variável"
+        "BCN0404-13"	"Geometria Analítica"
+        "BCN0405-13"	"Introdução às Equações Diferenciais Ordinárias"
+        "BIN0406-13"	"Introdução à Probabilidade e à Estatística"
+        "BCN0407-13"	"Funções de Várias Variáveis"
+        "BCM0504-13"	"Natureza da Informação"
+        "BCM0505-13"	"Processamento da Informação"
+        "BCM0506-13"	"Comunicação e Redes"
+        "BIQ0602-13"	"Estrutura e Dinâmica Social"
+        "BIR0603-13"	"Ciência, Tecnologia e Sociedade"
+
+        
 ))
