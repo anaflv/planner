@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatCardModule, MatRadioModule } from '@angular/material';
 import  {MatToolbarModule } from '@angular/material/toolbar';
+
  
 
 import { AppComponent } from './app.component';
@@ -17,7 +18,9 @@ import { Browser } from 'protractor';
     BrowserAnimationsModule, 
     MatButtonModule,
     MatCheckboxModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCardModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
