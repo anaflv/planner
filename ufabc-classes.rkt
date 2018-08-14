@@ -82,8 +82,18 @@
   (let f ([n n] [o bcc-17])
     (cond [(null? o) #f]
           [(eq? (car o) n) #t]
+          [(eq? (hash-ref old-curriculum (car o) "0") n) #t]
           [else (f n (cdr o))])))
 
+
+
+;ver se matéria esta na lista de cursos
+(define (man2 n course)
+  (let f ([n n] [o course])
+    (cond [(null? o) #f]
+          [(eq? (car o) n) #t]
+          [(eq? (hash-ref old-curriculum (car o) "0") n) #t]
+          [else (f n (cdr o))])))
 
 
 
@@ -92,6 +102,13 @@
   ((lambda (x)
      (filter mandatory? x))
    y))
+
+(define threshold 5)
+(define  aa
+  (filter (lambda (x) (man2 x bcc-17)) '("MCTA001-13")))
+
+
+
 
 
 ;filtrar materias obrigatorias
@@ -102,11 +119,14 @@
 
 
 
-(print-names
-       (filter-mandatory classes-taken-dummy))
+(filter-mandatory-bcc classes-taken-dummy)
+
+;(filter-mandatory-bcc '("MCTA002-17"))
+
+;(print-names
+;       (filter-mandatory classes-taken-dummy))
 
 
 (print-names
-       (filter-mandatory-bcc classes-taken-dummy))
-
+      (filter-mandatory-bcc classes-taken-dummy))
 
