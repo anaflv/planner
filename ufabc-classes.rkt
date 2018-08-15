@@ -1,7 +1,8 @@
 #lang racket
 
 
-(require racket/trace)
+(require racket/trace
+         json)
 
 ;dados de matérias
 (require "classes.rkt")
@@ -25,7 +26,6 @@
       [else (loop (add1 i)
                   r
                   (cdr l))])))
-
 
 
 
@@ -68,27 +68,9 @@
           [else (c (add1 n) (cdr l))])))
 
 
-;ver se matéria esta em obrigatorias bct
-(define (mandatory? n)
-  (let f ([n n] [o bct])
-    (cond [(null? o) #f]
-          [(eq? (car o) n) #t]
-          [(eq? (hash-ref old-curriculum (car o) "0") n) #t]
-          [else (f n (cdr o))])))
-
-
-;ver se matéria esta em obrigatorias bcc
-(define (bcc-mandatory? n)
-  (let f ([n n] [o bcc-17])
-    (cond [(null? o) #f]
-          [(eq? (car o) n) #t]
-          [(eq? (hash-ref old-curriculum (car o) "0") n) #t]
-          [else (f n (cdr o))])))
-
-
 
 ;ver se matéria esta na lista de cursos
-(define (man2 n course)
+(define (is-in-list n course)
   (let f ([n n] [o course])
     (cond [(null? o) #f]
           [(eq? (car o) n) #t]
@@ -97,36 +79,25 @@
 
 
 
-;filtrar materias obrigatorias
-(define (filter-mandatory y)
-  ((lambda (x)
-     (filter mandatory? x))
-   y))
 
-(define threshold 5)
-(define  aa
-  (filter (lambda (x) (man2 x bcc-17)) '("MCTA001-13")))
+(define mandatory-bi bct)
+(define mandatory-specific bcc-17)
+(define free-specific '(1))
 
 
+;filtrar matérias obrigatórias bi
+(define filter-bi
+  (filter (lambda (x)
+            (is-in-list x mandatory-bi))
+          classes-taken-dummy))
 
-
-
-;filtrar materias obrigatorias
-(define (filter-mandatory-bcc y)
-  ((lambda (x)
-     (filter bcc-mandatory? x))
-   y))
+;filtrar mmatérias obrigatórias específicas
+(define filter-mandatory-specific
+  (filter (lambda (x)
+            (is-in-list x mandatory-bi))
+          classes-taken-dummy))
 
 
 
-(filter-mandatory-bcc classes-taken-dummy)
-
-;(filter-mandatory-bcc '("MCTA002-17"))
-
-;(print-names
-;       (filter-mandatory classes-taken-dummy))
-
-
-(print-names
-      (filter-mandatory-bcc classes-taken-dummy))
+(print-names filter-mandatory-specific)
 
