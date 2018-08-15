@@ -76,7 +76,7 @@
 
 
 (define (get-courses req)
-  (response #:body (jsexpr->string courses/result))
+  (response #:body (jsexpr->string courses/result)
 	    #:mime "application/json"))
 
 

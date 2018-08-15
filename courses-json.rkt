@@ -40,7 +40,6 @@ a
            (loop (cdr l) (append r (list (hash-ref (car l) 'codigo ""))))]
           [else (loop (cdr l) r)])))
 
-;make-course-list
 
 
 

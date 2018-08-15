@@ -9,7 +9,7 @@
 
 (provide indices-notas-F)
 
-(define taken '("a" "b" "BCK0103-15" "BCL0308-15" "BIQ0602-15" "BCK0104-15" "BIR0603-15" "BCS0002-15"))
+
 (define notas '(1 2 0 0 3 2))
 
 
