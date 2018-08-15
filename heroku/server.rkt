@@ -47,14 +47,38 @@
    mime
    headers/kw
    body))
-  
 
 
 
-  
+(define n
+  (list "a" "b" "c"))
+
+
+(define (assoc/course a)
+   (make-hash (list (cons 'codigo a))))
+
+
+;criar lista json de associacoes
+(define courses/result
+  (let loop ([t n] [r '()])
+    (cond [(null? t) r]
+          [else (loop (cdr t)
+                      (append r
+                              (list (assoc/course
+                                     (car t)))))])))
+
+(jsexpr->string courses/result)
+
+
+;(define (get-courses req)
+;  (response #:body (jsexpr->string #hasheq((course1 . (1 2 3))))
+;	    #:mime "application/json"))
+
+
 (define (get-courses req)
-  (response #:body (jsexpr->string #hasheq((course1 . (1 2 3))))
+  (response #:body (jsexpr->string courses/result))
 	    #:mime "application/json"))
+
 
 
   
