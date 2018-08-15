@@ -8,10 +8,6 @@
 
 
 
-(define (start req)
-  (response/xexpr
-   '(html (head (title "Racket Heroku App"))
-          (body (h1 "It works!")))))
 
 
 (define (response
@@ -64,7 +60,7 @@
   
 (define-values (go _)
   (dispatch-rules
-   [("")  #:method "get" get-courses]
+   [("courses")  #:method "get" get-courses]
    [else ""]))
 
 
