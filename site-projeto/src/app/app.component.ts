@@ -1,12 +1,30 @@
 import { Component } from '@angular/core';
 
+import { UserData } from './model';
+import { DataService } from './data.service';
+
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [DataService]
 })
 export class AppComponent {
+  
+  constructor(
+    private dataService: DataService) { }
+
+
+  userData: UserData;
+  
   title = 'app';
+
+  ngOnInit(){
+    this.userData = undefined;
+  }
+
 
   courses: Courses[] = [
     { name: 'Engenharias' }
@@ -20,7 +38,14 @@ export class AppComponent {
     , { name: 'Engenharia de Materiais' }
   ]
 
+  get_url (){
+      this.dataService.teste();
+  }
+
 }
+
+ 
+
 
 export class Courses {
   name: string;
