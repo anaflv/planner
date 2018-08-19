@@ -14,11 +14,12 @@ export class Customer {
   export class UserData {
 
     bi: string;
-    postBi: string;
+    postBi: number;
+    classes: string;
 
   }
 
-  export class Course {
+  export interface Course {
     
     codigo: string;
   }

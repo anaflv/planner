@@ -3,6 +3,8 @@
 (require json
          racket/trace)
 
+(provide make-course-list)
+
 
 (define j
 "[{\"codigo\":\"BIK0102-13\",\"creditos\":3,\"periodo\":\"1\",\"conceito\":\"A\",\"situacao\":\"Aprovado\",\"ano\":2013,\"disciplina\":\"Estrutura da Matéria\",\"categoria\":\"Obrigatória\"},{\"codigo\":\"BIR0004-13\",\"creditos\":3,\"periodo\":\"1\",\"conceito\":\"D\",\"situacao\":\"Aprovado\",\"ano\":2013,\"disciplina\":\"Bases Epistemológicas da Ciência Moderna\",\"categoria\":\"Obrigatória\"}]"
@@ -19,9 +21,8 @@
 
 
 (define a 
-(string->jsexpr j3))
+  (string->jsexpr j))
 
-a
 
 
 (define (passed-class? grade)

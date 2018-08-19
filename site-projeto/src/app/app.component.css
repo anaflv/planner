@@ -42,3 +42,7 @@
   .example-margin {
     margin: 5px 0;
   }
+
+  .example-full-width {
+    width: 100%;
+  }

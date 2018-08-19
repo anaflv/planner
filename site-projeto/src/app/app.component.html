@@ -9,8 +9,8 @@
     <div class="mat-typography">
       <h1>Perdido nas matrículas?</h1>
       <p class="body-2">Sabemos como é fácil se perder nas UFABC - quais matérias ainda preciso fazer? Eu acho que faltam 30 matérias obrigatórias,
-        é isso mesmo? Mas e as minhas matérias livres? Será que vou me formar mesmo? Quando? Mas eu preciso mesmo fazer eletromag? Mas eu reprovei FUV quatro vezes?
-        Devo mudar pro BCH?
+        é isso mesmo? Mas e as minhas matérias livres? Será que vou me formar mesmo? Quando? Mas eu preciso mesmo fazer eletromag?
+        Mas eu reprovei FUV quatro vezes? Devo mudar pro BCH?
       </p>
       <p> Estamos aqui para te ajudar.</p>
       <button mat-raised-button color="primary" id="start-button">Começar</button>
@@ -19,7 +19,8 @@
       <button (click)="add()">click</button>
 
 
-      
+
+
       <br>
       <br>
       <br>
@@ -28,8 +29,8 @@
         <p>Escolha seu Bacharelado Interdisciplinar:</p>
 
 
-        <mat-radio-group  [(ngModel)]="userData.bi" class="example-radio-group">
-          <mat-radio-button class="example-radio-button" value="BCT" >
+        <mat-radio-group [(ngModel)]="userData.bi" class="example-radio-group">
+          <mat-radio-button class="example-radio-button" value="BCT">
             BC&T
           </mat-radio-button>
           <mat-radio-button class="example-radio-button" value="BCH">
@@ -38,13 +39,18 @@
 
 
 
-          
+
         </mat-radio-group>
 
         <br>
         <br>
-       
-        
+
+
+
+        <mat-form-field class="example-full-width">
+          <textarea  matInput placeholder="Json das materias"  [(ngModel)]="userData.classes"></textarea>
+        </mat-form-field>
+
         <!-- <p style="margin-bottom: 0">Escolha seu curso pós-BI:</p>
         <section class="example-section">
           <mat-checkbox class="example-margin" [(ngModel)]="userData.postBi" *ngFor="let c of courses" [value]="c.name">{{c.name}}</mat-checkbox>

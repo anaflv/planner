@@ -85,11 +85,29 @@
 (jsexpr->string courses/result)
 
 
+
+
+(define (get-user-bi a)
+  (print (hash-ref a 'bi ""))
+  (hash-ref a 'bi' ""))
+
+(define (get-user-classes a)
+  (print (hash-ref a 'classes ""))
+  (hash-ref a 'classes ""))
+
+
+
 (define (get-course-data req)
-  (print (request-post-data/raw req))
+  (let ([data/bytes (request-post-data/raw req)])
+    (let ([data (bytes->string/utf-8 data/bytes)])
+      (let ([data/string (string->jsexpr data)])
+        (get-user-bi data/string)
+        (get-user-classes data/string)
+        )))
   (response #:body (jsexpr->string courses/result)
 	    #:mime "application/json"
             #:headers jhead))
+
 
 
 
