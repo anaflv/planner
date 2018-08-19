@@ -6,6 +6,7 @@
          web-server/dispatch
 	 json)
 
+(require "../courses-json.rkt" )
 
 
 
@@ -64,9 +65,6 @@
 
 
 
-
-
-
 (define (assoc/course a)
    (make-hash (list (cons 'codigo a))))
 
@@ -91,9 +89,16 @@
   (print (hash-ref a 'bi ""))
   (hash-ref a 'bi' ""))
 
+
+
 (define (get-user-classes a)
-  (print (hash-ref a 'classes ""))
-  (hash-ref a 'classes ""))
+  (define usr-classes-hash
+    (string->jsexpr
+          (string->jsexpr
+                     (hash-ref a 'classes ""))))
+  (make-course-list usr-classes-hash)
+  (print (make-course-list usr-classes-hash)))
+  
 
 
 
@@ -101,7 +106,7 @@
   (let ([data/bytes (request-post-data/raw req)])
     (let ([data (bytes->string/utf-8 data/bytes)])
       (let ([data/string (string->jsexpr data)])
-        (get-user-bi data/string)
+        ;(get-user-bi data/string)
         (get-user-classes data/string)
         )))
   (response #:body (jsexpr->string courses/result)
@@ -118,18 +123,11 @@
             #:headers jhead))
 
 
-
-
-
-
-
 (define database (hash 'a 1))
 
 
 (define (symbolify x)
   (string->symbol (format "~a" x)))
-
-
 
 
 (define (get-catalog-item req x)

@@ -34,13 +34,12 @@
 
 
 ;criar lista de cursos que passou
-(define make-course-list
+(define (make-course-list a)
   (let loop ([l a] [r '()])
     (cond [(null? l) r]
           [(passed-class? (hash-ref (car l) 'conceito ""))
            (loop (cdr l) (append r (list (hash-ref (car l) 'codigo ""))))]
           [else (loop (cdr l) r)])))
-
 
 
 
