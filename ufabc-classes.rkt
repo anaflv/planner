@@ -1,5 +1,5 @@
 #lang racket
-
+(require racket/file)
 
 (require racket/trace
          json)
@@ -97,6 +97,7 @@
             (is-in-list x mandatory-bi))
           classes-taken-dummy))
 
+(define (limparstring x) (regexp-replace* #rx"(-.. )" (file->string x)""))
 
 
 (print-names filter-mandatory-specific)
