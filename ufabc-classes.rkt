@@ -3,6 +3,11 @@
          racket/trace
          json)
 
+(provide filter-specific
+         filter-bi
+         filter-free)
+
+
 
 ;dados de matérias
 (require "classes.rkt")
@@ -71,25 +76,28 @@
 (define free '(1))
 
 
+
 ;filtrar matérias obrigatórias bi
-(define filter-bi
+(define (filter-bi l)
   (filter (lambda (x)
-            (is-in-list x mandatory-bi))
-          classes-taken-dummy))
+            (is-in-list-2 x mandatory-bi))
+          l))
 
 
 ;filtrar matérias obrigatórias específicas
-(define filter-specific
+(define (filter-specific l)
   (filter (lambda (x)
             (is-in-list-2 x mandatory-specific))
-          classes-taken-dummy))
+          l))
 
 
 ;filtrar matérias obrigatórias específicas
-(define filter-free
+(define (filter-free l b s)
   (filter (lambda (x)
-            (is-not-in-list x (append filter-bi filter-specific)))
-          classes-taken-dummy))
+            (is-not-in-list x (append b s)))
+          l))
+
+
 
 
 

@@ -4,6 +4,7 @@
          racket/trace)
 
 (provide make-course-list)
+(provide courses/result)
 
 
 (define j
@@ -24,7 +25,6 @@
   (string->jsexpr j))
 
 
-
 (define (passed-class? grade)
   (if (or (equal? "A" grade)
           (equal? "B" grade)
@@ -40,6 +40,29 @@
           [(passed-class? (hash-ref (car l) 'conceito ""))
            (loop (cdr l) (append r (list (hash-ref (car l) 'codigo ""))))]
           [else (loop (cdr l) r)])))
+
+
+
+(define n
+  (list "a" "b" "c"))
+
+
+(define (assoc/course a)
+   (make-hash (list (cons 'codigo a))))
+
+
+
+
+
+;criar lista json de associacoes
+(define courses/result
+  (let loop ([t n] [r '()])
+    (cond [(null? t) r]
+          [else (loop (cdr t)
+                      (append r
+                              (list (assoc/course
+                                     (car t)))))])))
+
 
 
 

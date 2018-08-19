@@ -7,6 +7,7 @@
 	 json)
 
 (require "../courses-json.rkt" )
+(require "../ufabc-classes.rkt")
 
 
 
@@ -51,10 +52,6 @@
 
 
 
-(define n
-  (list "a" "b" "c"))
-
-
 (define jhead
   (list (make-header #"Access-Control-Allow-Credentials"
                     #"true")
@@ -62,26 +59,6 @@
                     #"*")
         (make-header #"Access-Control-Allow-Headers"
                     #"*")))
-
-
-
-(define (assoc/course a)
-   (make-hash (list (cons 'codigo a))))
-
-
-;criar lista json de associacoes
-(define courses/result
-  (let loop ([t n] [r '()])
-    (cond [(null? t) r]
-          [else (loop (cdr t)
-                      (append r
-                              (list (assoc/course
-                                     (car t)))))])))
-
-
-
-(jsexpr->string courses/result)
-
 
 
 
@@ -94,25 +71,23 @@
 (define (get-user-classes a)
   (define usr-classes-hash
     (string->jsexpr
-          (string->jsexpr
-                     (hash-ref a 'classes ""))))
-  (make-course-list usr-classes-hash)
-  (print (make-course-list usr-classes-hash)))
-  
-
+           (hash-ref a 'classes "")))
+  (define c (make-course-list
+             usr-classes-hash))
+  (define specific (filter-specific c))
+  (define mandatory (filter-bi c))
+  (print mandatory)
+  ;(print c)
+  )
 
 
 (define (get-course-data req)
   (let ([data/bytes (request-post-data/raw req)])
-    (let ([data (bytes->string/utf-8 data/bytes)])
-      (let ([data/string (string->jsexpr data)])
-        (get-user-classes data/string)
-        )))
+    (let ([data (bytes->jsexpr data/bytes)])
+        (get-user-classes data)))
   (response #:body (jsexpr->string courses/result)
 	    #:mime "application/json"
             #:headers jhead))
-
-
 
 
 (define (get-courses req)
@@ -135,6 +110,7 @@
                 #:headers jhead))
 
 
+
 (define-values (go _)
   (dispatch-rules
    [("courses")  #:method "get" get-courses]
@@ -149,8 +125,6 @@
 (define port (if (getenv "PORT")
                  (string->number (getenv "PORT"))
                  8080))
-
-
 
 
 (serve/servlet go
