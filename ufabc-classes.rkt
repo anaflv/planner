@@ -1,47 +1,11 @@
 #lang racket
-(require racket/file)
-
-(require racket/trace
+(require racket/file
+         racket/trace
          json)
+
 
 ;dados de matérias
 (require "classes.rkt")
-
-(provide indices-notas-F)
-
-
-(define notas '(1 2 0 0 3 2))
-
-
-
-;retorna indices de notas que nao sao f
-(define (indices-notas-F notas)
-  (let loop ([i 0] [r '()] [l notas])
-    (cond
-      [(null? l) r]
-      [(not (= 0 (car l)))
-       (loop (add1 i)
-             (append r (list i)) 
-             (cdr l))]
-      [else (loop (add1 i)
-                  r
-                  (cdr l))])))
-
-
-
-;retorna lista de matérias que nao tem nota f
-(define (remove-classes-grade-F c)
-  (let loop ([i 0] [r '()] [g (indices-notas-F notas)] [c c])
-    (trace loop)
-    (cond
-      [(null? c) r]
-      [(null? g) r]
-      [(not (equal? i (car g)))
-           (loop (add1 i) r g (cdr c))]
-      [else (loop (add1 i)
-                  (append r (list (car c)))
-                  (cdr g)
-                  (cdr c))])))
 
 
 (define (print-names c)
@@ -55,10 +19,11 @@
                                        (car c)))))])))
 
 
+;pega ate o digito -
+(define (limpar-string x)
+  (regexp-replace* #rx"(-..)"
+                   x ""))
 
-
-(trace indices-notas-F)
-(trace remove-classes-grade-F)
 
 
 ;contar quantas matérias
@@ -75,6 +40,18 @@
     (cond [(null? o) #f]
           [(eq? (car o) n) #t]
           [(eq? (hash-ref old-curriculum (car o) "0") n) #t]
+          [else (f n (cdr o))])))
+
+
+
+;ver se matéria esta na lista de cursos
+(define (is-in-list-2 n course)
+  (let f ([n n] [o course])
+    (cond [(null? o) #f]
+          [(eq? (car o) n) #t]
+          [(equal? (limpar-string (car o))
+                 (limpar-string n))
+                 #t]
           [else (f n (cdr o))])))
 
 
@@ -97,8 +74,25 @@
             (is-in-list x mandatory-bi))
           classes-taken-dummy))
 
-(define (limparstring x) (regexp-replace* #rx"(-.. )" (file->string x)""))
 
 
-(print-names filter-mandatory-specific)
+
+;(print-names filter-mandatory-specific)
+
+
+;filtrar mmatérias obrigatórias específicas
+(define filter-mandatory-specific-2
+  (filter (lambda (x)
+            (is-in-list-2 x mandatory-bi))
+          classes-taken-dummy))
+
+
+
+
+;classes-taken-dummy
+;filter-mandatory-specific
+filter-mandatory-specific-2
+
+(equal? (limpar-string "a-13") (limpar-string "a-23"))
+(limpar-string "a-13")
 
