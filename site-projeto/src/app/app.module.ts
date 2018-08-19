@@ -5,10 +5,11 @@ import { MatButtonModule, MatCheckboxModule, MatCardModule, MatRadioModule } fro
 import  {MatToolbarModule } from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http'; 
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
  
 
 import { AppComponent } from './app.component';
-
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { AppComponent } from './app.component';
     MatToolbarModule,
     MatCardModule,
     MatRadioModule, 
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   bootstrap: [AppComponent]
 })

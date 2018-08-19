@@ -58,13 +58,14 @@
   (list (make-header #"Access-Control-Allow-Credentials"
                     #"true")
         (make-header #"Access-Control-Allow-Origin"
+                    #"*")
+        (make-header #"Access-Control-Allow-Headers"
                     #"*")))
 
-;
-;   '#hasheq(
-;          (Access-Control-Allow-Credentials . ("true"))
-;          (Content-Type . ("application/json"))
-;          (Access-Control-Allow-Origin . ("*"))))
+
+
+
+
 
 (define (assoc/course a)
    (make-hash (list (cons 'codigo a))))
@@ -84,19 +85,50 @@
 (jsexpr->string courses/result)
 
 
-
-(define (get-courses req)
+(define (get-course-data req)
+  (print (request-post-data/raw req))
   (response #:body (jsexpr->string courses/result)
 	    #:mime "application/json"
             #:headers jhead))
 
 
 
-  
+(define (get-courses req)
+  (print req)
+  (response #:body (jsexpr->string courses/result)
+	    #:mime "application/json"
+            #:headers jhead))
+
+
+
+
+
+
+
+(define database (hash 'a 1))
+
+
+(define (symbolify x)
+  (string->symbol (format "~a" x)))
+
+
+
+
+(define (get-catalog-item req x)
+      (response #:body (jsexpr->string courses/result)
+                #:mime "application/json"
+                #:headers jhead))
+
+
+
 (define-values (go _)
   (dispatch-rules
    [("courses")  #:method "get" get-courses]
-   [else ""]))
+   [("courses" (string-arg)) #:method "post" get-catalog-item]
+   [("courses")  #:method "post" get-course-data]
+  ; [("courses2") get-courses]
+   ;[else get-courses]
+   ))
 
 
 

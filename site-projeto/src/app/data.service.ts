@@ -1,13 +1,18 @@
 /* tslint:disable:no-unused-variable */
 import { Injectable } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Course } from './model';
+import { Observable, of } from 'rxjs';
+import { Course, UserData } from './model';
 
-//import {Http, HTTP_PROVIDERS} from '@angular/http';
 
-import {map} from 'rxjs/operators';
+
+import { catchError, map, tap } from 'rxjs/operators';
+
+const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'text/plain' })
+  };
 
 
 @Injectable()
@@ -21,7 +26,7 @@ export class DataService {
     private statesUrl = 'api/states';
     private apiUrl = 'https://ufabc-courses.herokuapp.com/courses';
     private local = 'http://localhost:8080/courses';
-
+    private bin = 'https://httpbin.org/post?foo=12&bar=hello&s=c';
 
 
 
@@ -36,8 +41,16 @@ export class DataService {
     }
 
     getConfig() {
+        console.log(this.http.get(this.local).pipe);
         return this.http.get<Course[]>(this.local);
     }
+
+    addHero (userdata: UserData): Observable<UserData> {
+        console.log(userdata);
+        return this.http.post(`${this.local}`,userdata,httpOptions).pipe(
+          tap((userdata: UserData) => console.log(`added hero w/ id=${userdata.bi}`))
+        );
+      }
 
 
     // t1() {

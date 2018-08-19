@@ -17,7 +17,7 @@ export class AppComponent {
     private dataService: DataService) { }
 
 
-  userData: UserData;
+  userData: UserData = new UserData();
   courses2: Course[];
 
   title = 'app';
@@ -31,23 +31,24 @@ export class AppComponent {
 
 
 
-  courses: Courses[] = [
-    { name: 'Engenharias' }
-    , { name: 'Engenharia Aeroespacial' }
-    , { name: 'Engenharia Ambiental' }
-    , { name: 'Engenharia Biomédica' }
-    , { name: 'Engenharia de Energia' }
-    , { name: 'Engenharia de Gestão' }
-    , { name: 'Engenharia de Informação' }
-    , { name: 'Engenharia de Instrumentação, Automação e Robótica' }
-    , { name: 'Engenharia de Materiais' }
+  courses: SiteCourse[] = [
+      { name: 'Bacharelado em Ciência da Computação', id: 1}
+    , { name: 'Engenharia Aeroespacial', id: 2 }
+    , { name: 'Engenharia Ambiental', id: 3 }
+    , { name: 'Engenharia Biomédica', id: 4 }
+    , { name: 'Engenharia de Energia', id: 5 }
+    , { name: 'Engenharia de Gestão', id: 6 }
+    , { name: 'Engenharia de Informação', id: 7 }
+    , { name: 'Engenharia de Instrumentação, Automação e Robótica', id: 8 }
+    , { name: 'Engenharia de Materiais', id: 9 }
   ]
 
-  get_url() {
+  getUrl() {
 
     console.log("hello");
-
     this.showConfig();
+
+    console.log(this.userData);
 
   }
 
@@ -64,10 +65,11 @@ export class AppComponent {
   }
 
 
-
-  onClickMe() {
-    this.showConfig();
-
+  add(): void {
+    this.dataService.addHero(this.userData as UserData)
+      .subscribe(hero => {
+        console.log('got it');
+      });
   }
 
 
@@ -75,8 +77,9 @@ export class AppComponent {
 
 
 
-export class Courses {
+export class SiteCourse {
   name: string;
+  id: number;
 }
 
 
