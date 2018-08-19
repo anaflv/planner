@@ -3,12 +3,11 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatCardModule, MatRadioModule } from '@angular/material';
 import  {MatToolbarModule } from '@angular/material/toolbar';
-import { HttpModule }       from '@angular/http';
+import { HttpClientModule } from '@angular/common/http'; 
 
  
 
 import { AppComponent } from './app.component';
-import { Browser } from 'protractor';
 
 
 
@@ -23,9 +22,9 @@ import { Browser } from 'protractor';
     MatCheckboxModule,
     MatToolbarModule,
     MatCardModule,
-    MatRadioModule, HttpModule 
+    MatRadioModule, 
+    HttpClientModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

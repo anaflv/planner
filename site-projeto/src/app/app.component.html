@@ -15,8 +15,10 @@
       <p> Estamos aqui para te ajudar.</p>
       <button mat-raised-button color="primary" id="start-button">Começar</button>
 
-      <button (click)="get_url()">click</button>
+      <button (click)="onClickMe()">Click me!</button>
 
+
+      
       <br>
       <br>
       <br>
@@ -26,12 +28,15 @@
 
 
         <mat-radio-group class="example-radio-group">
-          <mat-radio-button class="example-radio-button" value="BCT">
+          <mat-radio-button class="example-radio-button" value="BCT" [(ngModel)]="model.name" name="name">
             BC&T
           </mat-radio-button>
-          <mat-radio-button class="example-radio-button" value="BCH">
+          <mat-radio-button class="example-radio-button" value="BCH" [(ngModel)]="model.name" name="name">
             BCH
           </mat-radio-button>
+
+
+
           
         </mat-radio-group>
 

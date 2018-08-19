@@ -13,7 +13,12 @@ export class Customer {
 
   export class UserData {
 
-    bi: String;
+    bi: string;
     postBi: string;
 
+  }
+
+  export class Course {
+    
+    codigo: string;
   }

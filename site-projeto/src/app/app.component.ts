@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { UserData } from './model';
+import { UserData, Course } from './model';
 import { DataService } from './data.service';
 
 
@@ -12,18 +12,23 @@ import { DataService } from './data.service';
   providers: [DataService]
 })
 export class AppComponent {
-  
+
   constructor(
     private dataService: DataService) { }
 
 
   userData: UserData;
-  
+  courses2: Course[];
+
   title = 'app';
 
-  ngOnInit(){
-    this.userData = undefined;
+  ngOnInit() {
+    // this.userData = new UserData();
+    // this.userData.bi = 'hello';
+
+
   }
+
 
 
   courses: Courses[] = [
@@ -38,15 +43,40 @@ export class AppComponent {
     , { name: 'Engenharia de Materiais' }
   ]
 
-  get_url (){
-      this.dataService.teste();
+  get_url() {
+
+    console.log("hello");
+
+    this.showConfig();
+
   }
+
+  course: Course;
+
+  showConfig() {
+    this.dataService.getConfig()
+      .subscribe((data: Course[]) => this.courses2 = { ...data });
+
+
+    console.log(this.courses2);
+
+
+  }
+
+
+
+  onClickMe() {
+    this.showConfig();
+
+  }
+
 
 }
 
- 
 
 
 export class Courses {
   name: string;
 }
+
+

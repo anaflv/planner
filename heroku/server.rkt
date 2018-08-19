@@ -49,9 +49,22 @@
    body))
 
 
+
 (define n
   (list "a" "b" "c"))
 
+
+(define jhead
+  (list (make-header #"Access-Control-Allow-Credentials"
+                    #"true")
+        (make-header #"Access-Control-Allow-Origin"
+                    #"*")))
+
+;
+;   '#hasheq(
+;          (Access-Control-Allow-Credentials . ("true"))
+;          (Content-Type . ("application/json"))
+;          (Access-Control-Allow-Origin . ("*"))))
 
 (define (assoc/course a)
    (make-hash (list (cons 'codigo a))))
@@ -66,17 +79,16 @@
                               (list (assoc/course
                                      (car t)))))])))
 
+
+
 (jsexpr->string courses/result)
 
-
-;(define (get-courses req)
-;  (response #:body (jsexpr->string #hasheq((course1 . (1 2 3))))
-;	    #:mime "application/json"))
 
 
 (define (get-courses req)
   (response #:body (jsexpr->string courses/result)
-	    #:mime "application/json"))
+	    #:mime "application/json"
+            #:headers jhead))
 
 
 
@@ -91,6 +103,8 @@
 (define port (if (getenv "PORT")
                  (string->number (getenv "PORT"))
                  8080))
+
+
 
 
 (serve/servlet go
