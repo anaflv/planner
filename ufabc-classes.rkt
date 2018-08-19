@@ -19,7 +19,7 @@
                                        (car c)))))])))
 
 
-;pega ate o digito -
+;pegar codigo da materia (sem ano)
 (define (limpar-string x)
   (regexp-replace* #rx"(-..)"
                    x ""))
@@ -35,6 +35,7 @@
 
 
 ;ver se matéria esta na lista de cursos
+;usando hash
 (define (is-in-list n course)
   (let f ([n n] [o course])
     (cond [(null? o) #f]
@@ -42,6 +43,14 @@
           [(eq? (hash-ref old-curriculum (car o) "0") n) #t]
           [else (f n (cdr o))])))
 
+
+
+;nao esta na lista
+(define (is-not-in-list n course)
+  (let f ([n n] [o course])
+    (cond [(null? o) #t]
+          [(eq? (car o) n) #f]
+          [else (f n (cdr o))])))
 
 
 ;ver se matéria esta na lista de cursos
@@ -59,7 +68,7 @@
 
 (define mandatory-bi bct)
 (define mandatory-specific bcc-17)
-(define free-specific '(1))
+(define free '(1))
 
 
 ;filtrar matérias obrigatórias bi
@@ -68,31 +77,21 @@
             (is-in-list x mandatory-bi))
           classes-taken-dummy))
 
-;filtrar mmatérias obrigatórias específicas
-(define filter-mandatory-specific
+
+;filtrar matérias obrigatórias específicas
+(define filter-specific
   (filter (lambda (x)
-            (is-in-list x mandatory-bi))
+            (is-in-list-2 x mandatory-specific))
+          classes-taken-dummy))
+
+
+;filtrar matérias obrigatórias específicas
+(define filter-free
+  (filter (lambda (x)
+            (is-not-in-list x (append filter-bi filter-specific)))
           classes-taken-dummy))
 
 
 
 
-;(print-names filter-mandatory-specific)
-
-
-;filtrar mmatérias obrigatórias específicas
-(define filter-mandatory-specific-2
-  (filter (lambda (x)
-            (is-in-list-2 x mandatory-bi))
-          classes-taken-dummy))
-
-
-
-
-;classes-taken-dummy
-;filter-mandatory-specific
-filter-mandatory-specific-2
-
-(equal? (limpar-string "a-13") (limpar-string "a-23"))
-(limpar-string "a-13")
 
