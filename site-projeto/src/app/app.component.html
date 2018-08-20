@@ -39,15 +39,28 @@
         <br>
         <br>
 
+ 
+        <section *ngIf="userData.bi == 'BCH'"> 
+          <p>Ainda não temos os dados do BCH, mas os teremos em breve!</p>
+        </section>
 
+        <section *ngIf="userData.bi == 'BCT'">
+            <p>Escolha o curso pós-BI que você está fazendo ou gostaria de fazer:</p>
+            <mat-radio-group [(ngModel)]="userData.postBi" class="example-radio-group">
+                <mat-radio-button class="example-radio-button" *ngFor="let c of courses" [value]="c.name">
+                    {{c.name}}
+                  </mat-radio-button>
+            </mat-radio-group>
+        </section>
+     
+        
 
+        <section style="margin-top: 50px;">
+            <p>Coloque o texto completo que está no botão "JSON", na sua ficha individual no <a href="https://aluno.ufabc.edu.br/fichas_individuais">portal do aluno.</a>:</p>
         <mat-form-field class="example-full-width">
-          <textarea  matInput placeholder="Json das materias"  [(ngModel)]="userData.classes" ></textarea>
-        </mat-form-field>
-
-        <!-- <section class="example-section">
-          <mat-checkbox class="example-margin" [(ngModel)]="userData.postBi" *ngFor="let c of courses" [value]="c.name">{{c.name}}</mat-checkbox>
-        </section>  -->
+            <textarea  matInput placeholder="Json das materias"  [(ngModel)]="userData.classes" ></textarea>
+          </mat-form-field>
+        </section>
 
 
 

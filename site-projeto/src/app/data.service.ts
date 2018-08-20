@@ -49,13 +49,14 @@ export class DataService {
     
     getClassList (userdata: UserData): Observable<ClassList> {
         console.log(userdata);
-        return this.http.post(`${this.local}`,userdata,httpOptions).pipe(
+        return this.http.post(`${this.apiUrl}`,userdata,httpOptions).pipe(
           tap((model: ClassList) => console.log(model))
         );
       }
 
 
     addHero (userdata: UserData): Observable<UserData> {
+
         //console.log(userdata);
         return this.http.post(`${this.apiUrl}`,userdata,httpOptions).pipe(
           tap((userdata: UserData) => console.log(`added hero w/ id=${userdata.bi}`))
