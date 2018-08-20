@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { UserData, Course } from './model';
+import { UserData, Course, UfabcClass, ClassList } from './model';
 import { DataService } from './data.service';
 
 
@@ -23,9 +23,6 @@ export class AppComponent {
   title = 'app';
 
   ngOnInit() {
-    // this.userData = new UserData();
-    // this.userData.bi = 'hello';
-
 
   }
 
@@ -53,26 +50,25 @@ export class AppComponent {
   }
 
   course: Course;
+  classList: ClassList;
+  l: UfabcClass[];
 
   showConfig() {
     this.dataService.getConfig()
       .subscribe((data: Course[]) => this.courses2 = { ...data });
-
-
     console.log(this.courses2);
-
-
   }
 
 
-  add(): void {
-    this.dataService.addHero(this.userData as UserData)
-      .subscribe(hero => {
-        console.log('got it');
-        console.log(hero);
+  getClasses(): void {
+    this.dataService.getClassList(this.userData as UserData)
+      .subscribe(classList => {
+        console.log(classList);
+        this.classList = classList;
+        this.l = classList.obrigatorias;
+        console.log(this.l);
       });
   }
-
 
 }
 

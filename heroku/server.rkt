@@ -76,18 +76,24 @@
              usr-classes-hash))
   (define specific (filter-specific c))
   (define mandatory (filter-bi c))
+  (define free (filter-free c mandatory specific))
+
   
-  (print (list/hash "obrigatorias"
-                    (get-names c)))
-  (list/hash "obrigatorias"
-                    (get-names c)))
+
+  (make-hash (list
+              (cons 'especificas
+                    (course/hash (get-names specific)))
+              (cons 'obrigatorias
+                    (course/hash (get-names mandatory)))
+              (cons 'livres
+                    (course/hash (get-names free))))))
 
 
 
 (define (get-course-data req)
   (let ([data/bytes (request-post-data/raw req)])
     (let ([data (bytes->jsexpr data/bytes)])
-      (print (get-user-classes data))
+      (print (jsexpr->string (get-user-classes data)))
       (response #:body  (jsexpr->string (get-user-classes data))
                 #:mime "application/json"
                 #:headers jhead))))
@@ -98,7 +104,6 @@
   (response #:body (jsexpr->string courses/result)
 	    #:mime "application/json"
             #:headers jhead))
-
 
 
 

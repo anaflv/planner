@@ -13,12 +13,6 @@
         Mas eu reprovei FUV quatro vezes? Devo mudar pro BCH?
       </p>
       <p> Estamos aqui para te ajudar.</p>
-      <button mat-raised-button color="primary" id="start-button">Começar</button>
-
-      <button (click)="getUrl()">Click me!</button>
-      <button (click)="add()">click</button>
-
-
 
 
       <br>
@@ -48,15 +42,45 @@
 
 
         <mat-form-field class="example-full-width">
-          <textarea  matInput placeholder="Json das materias"  [(ngModel)]="userData.classes"></textarea>
+          <textarea  matInput placeholder="Json das materias"  [(ngModel)]="userData.classes" ></textarea>
         </mat-form-field>
 
-        <!-- <p style="margin-bottom: 0">Escolha seu curso pós-BI:</p>
-        <section class="example-section">
+        <!-- <section class="example-section">
           <mat-checkbox class="example-margin" [(ngModel)]="userData.postBi" *ngFor="let c of courses" [value]="c.name">{{c.name}}</mat-checkbox>
-        </section> -->
+        </section>  -->
+
+
+
+        <button mat-raised-button color="primary" id="start-button" (click)="getClasses()" checked>Enivar</button>
+
+   
+  
 
       </mat-card>
+
+      
+      <mat-card style="margin-top: 40px;" *ngIf="classList">
+
+        <h3>Obrigatorias BI</h3>
+        <p *ngFor="let c of l">{{c.nome}}</p>
+
+      </mat-card>
+
+      <mat-card style="margin-top: 40px;" *ngIf="classList">
+
+          <h3>Obrigatorias Curso Especifico</h3>
+          <p *ngFor="let c of classList.especificas">{{c.nome}}</p>
+  
+      </mat-card>
+
+      <mat-card style="margin-top: 40px;" *ngIf="classList">
+
+          <h3>Livres</h3>
+          <p *ngFor="let c of classList.livres">{{c.nome}}</p>
+  
+      </mat-card>
+
+
 
     </div>
   </div>

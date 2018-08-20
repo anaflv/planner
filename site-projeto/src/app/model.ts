@@ -23,3 +23,13 @@ export class Customer {
     
     codigo: string;
   }
+
+  export interface UfabcClass {
+    name: string;
+  }
+
+  export interface ClassList {
+    especificas: UfabcClass[];
+    obrigatorias: UfabcClass[];
+    livres: UfabcClass[];
+  }

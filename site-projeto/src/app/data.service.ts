@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
-import { Course, UserData } from './model';
+import { Course, UserData, UfabcClass, ClassList } from './model';
 
 
 
@@ -45,9 +45,19 @@ export class DataService {
         return this.http.get<Course[]>(this.local);
     }
 
-    addHero (userdata: UserData): Observable<UserData> {
+
+    
+    getClassList (userdata: UserData): Observable<ClassList> {
         console.log(userdata);
         return this.http.post(`${this.local}`,userdata,httpOptions).pipe(
+          tap((model: ClassList) => console.log(model))
+        );
+      }
+
+
+    addHero (userdata: UserData): Observable<UserData> {
+        //console.log(userdata);
+        return this.http.post(`${this.apiUrl}`,userdata,httpOptions).pipe(
           tap((userdata: UserData) => console.log(`added hero w/ id=${userdata.bi}`))
         );
       }
