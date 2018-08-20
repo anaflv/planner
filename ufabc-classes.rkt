@@ -5,7 +5,8 @@
 
 (provide filter-specific
          filter-bi
-         filter-free)
+         filter-free
+         get-names)
 
 
 
@@ -13,7 +14,7 @@
 (require "classes.rkt")
 
 
-(define (print-names c)
+(define (get-names c)
   (let loop ([c c] [r '()])
     (cond
       [(null? c) r]

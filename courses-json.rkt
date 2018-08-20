@@ -3,8 +3,14 @@
 (require json
          racket/trace)
 
-(provide make-course-list)
-(provide courses/result)
+(provide make-course-list
+         courses/result
+         course/hash
+         list/hash)
+
+
+(require "ufabc-classes.rkt")
+
 
 
 (define j
@@ -44,17 +50,17 @@
 
 
 (define n
-  (list "a" "b" "c"))
+  (list "a" "b" "c" ))
+
 
 
 (define (assoc/course a)
-   (make-hash (list (cons 'codigo a))))
+   (make-hash (list
+               (cons 'nome a))))
 
 
 
-
-
-;criar lista json de associacoes
+;criar tabela de associacoes, para poder transformar em json
 (define courses/result
   (let loop ([t n] [r '()])
     (cond [(null? t) r]
@@ -62,6 +68,30 @@
                       (append r
                               (list (assoc/course
                                      (car t)))))])))
+
+;criar tabela de associacoes, para poder transformar em json
+(define (course/hash x)
+  (let loop ([t x] [r '()])
+    (cond [(null? t) r]
+          [else (loop (cdr t)
+                      (append r
+                              (list (assoc/course
+                                     (car t)))))])))
+
+
+(define (symbolify x)
+  (string->symbol (format "~a" x)))
+
+
+;cria hash que contem o hash dos cursos
+(define (list/hash x y)
+  (make-hash (list
+              (cons (symbolify x)
+                    (course/hash y)))))
+
+
+
+(jsexpr->string (list/hash "obrigatorias" n))
 
 
 

@@ -69,6 +69,7 @@ export class AppComponent {
     this.dataService.addHero(this.userData as UserData)
       .subscribe(hero => {
         console.log('got it');
+        console.log(hero);
       });
   }
 

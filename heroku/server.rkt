@@ -76,18 +76,21 @@
              usr-classes-hash))
   (define specific (filter-specific c))
   (define mandatory (filter-bi c))
-  (print mandatory)
-  ;(print c)
-  )
+  
+  (print (list/hash "obrigatorias"
+                    (get-names c)))
+  (list/hash "obrigatorias"
+                    (get-names c)))
+
 
 
 (define (get-course-data req)
   (let ([data/bytes (request-post-data/raw req)])
     (let ([data (bytes->jsexpr data/bytes)])
-        (get-user-classes data)))
-  (response #:body (jsexpr->string courses/result)
-	    #:mime "application/json"
-            #:headers jhead))
+      (print (get-user-classes data))
+      (response #:body  (jsexpr->string (get-user-classes data))
+                #:mime "application/json"
+                #:headers jhead))))
 
 
 (define (get-courses req)
@@ -97,7 +100,6 @@
             #:headers jhead))
 
 
-(define database (hash 'a 1))
 
 
 (define (symbolify x)
@@ -110,14 +112,28 @@
                 #:headers jhead))
 
 
+(define (not-allowed req)
+  (response #:code 405
+	    #:message "Method Not Allowed"))
+
+(define (not-found req)
+  (response #:code 404
+	    #:message "Not Found"))
+
+(define (bad-request)
+  (response #:code 400
+            #:message "Bad Request"))
+
+(define (internal-server-error)
+  (response #:code 500
+            #:message "Internal Server Error"))
+
 
 (define-values (go _)
   (dispatch-rules
    [("courses")  #:method "get" get-courses]
-   [("courses" (string-arg)) #:method "post" get-catalog-item]
    [("courses")  #:method "post" get-course-data]
-  ; [("courses2") get-courses]
-   ;[else get-courses]
+   [else not-found]
    ))
 
 
