@@ -49,7 +49,7 @@ export class DataService {
     
     getClassList (userdata: UserData): Observable<ClassList> {
         console.log(userdata);
-        return this.http.post(`${this.apiUrl}`,userdata,httpOptions).pipe(
+        return this.http.post(`${this.local}`,userdata,httpOptions).pipe(
           tap((model: ClassList) => console.log(model))
         );
       }
@@ -62,18 +62,6 @@ export class DataService {
           tap((userdata: UserData) => console.log(`added hero w/ id=${userdata.bi}`))
         );
       }
-
-
-    // t1() {
-    //     this.http.get('people.json')
-    //       // Call map on the response observable to get the parsed people object
-    //       .pipe(map(res => res.json()))
-    //       // Subscribe to the observable to get the parsed people object and attach it to the
-    //       // component
-    //       .subscribe(people => this.people = people);
-    //   }
-
-
 
 
     // /** Get existing customers as a Promise */
@@ -118,22 +106,4 @@ export class DataService {
 
 
 
-    // /** Get existing customers as an Observable */
-    // getCustomers(): Observable<Customer[]> {
-    //     //this.logger.log('Getting customers as an Observable via Http ...');
-
-    //     return this.http.get(this.customersUrl)
-    //         .pipe(map(response => response.json().data as Customer[])
-    //         );
-    // }
-
-    // /** Get existing states as an Observable */
-    // getStates(): Observable<string[]> {
-    //     //this.logger.log('Getting states as an Observable via Http ...');
-
-    //     return this.http.get(this.statesUrl)
-    //         .pipe(map(response => {
-    //             return response.json().data as string[];
-    //         }));
-    // }
 }

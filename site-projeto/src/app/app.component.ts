@@ -33,11 +33,11 @@ export class AppComponent {
     , { name: 'Engenharia Aeroespacial', id: 2 }
     , { name: 'Engenharia Ambiental', id: 3 }
     , { name: 'Engenharia Biomédica', id: 4 }
-    , { name: 'Engenharia de Energia', id: 5 }
-    , { name: 'Engenharia de Gestão', id: 6 }
-    , { name: 'Engenharia de Informação', id: 7 }
     , { name: 'Engenharia de Instrumentação, Automação e Robótica', id: 8 }
     , { name: 'Engenharia de Materiais', id: 9 }
+    , { name: 'Neurociência', id: 10 }
+    , { name: 'Licenciatura em Biologia', id: 11 }
+    , { name: 'Licenciatura em Química', id: 12 }
   ]
 
   getUrl() {

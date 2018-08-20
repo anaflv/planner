@@ -1,15 +1,13 @@
 #lang racket
 
 (require json
-         racket/trace)
+         racket/trace
+         "ufabc-classes.rkt")
 
 (provide make-course-list
-         courses/result
          course/hash
          list/hash)
 
-
-(require "ufabc-classes.rkt")
 
 
 
@@ -39,6 +37,7 @@
 
 
 
+
 ;criar lista de cursos que passou
 (define (make-course-list a)
   (let loop ([l a] [r '()])
@@ -49,10 +48,6 @@
 
 
 
-(define n
-  (list "a" "b" "c" ))
-
-
 
 (define (assoc/course a)
    (make-hash (list
@@ -60,14 +55,6 @@
 
 
 
-;criar tabela de associacoes, para poder transformar em json
-(define courses/result
-  (let loop ([t n] [r '()])
-    (cond [(null? t) r]
-          [else (loop (cdr t)
-                      (append r
-                              (list (assoc/course
-                                     (car t)))))])))
 
 ;criar tabela de associacoes, para poder transformar em json
 (define (course/hash x)
@@ -90,8 +77,6 @@
                     (course/hash y)))))
 
 
-
-(jsexpr->string (list/hash "obrigatorias" n))
 
 
 

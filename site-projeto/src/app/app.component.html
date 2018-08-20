@@ -47,12 +47,13 @@
         <section *ngIf="userData.bi == 'BCT'">
             <p>Escolha o curso pós-BI que você está fazendo ou gostaria de fazer:</p>
             <mat-radio-group [(ngModel)]="userData.postBi" class="example-radio-group">
-                <mat-radio-button class="example-radio-button" *ngFor="let c of courses" [value]="c.name">
+                <mat-radio-button class="example-radio-button" *ngFor="let c of courses" [value]="c.id">
                     {{c.name}}
                   </mat-radio-button>
             </mat-radio-group>
         </section>
      
+
         
 
         <section style="margin-top: 50px;">
@@ -64,12 +65,19 @@
 
 
 
-        <button mat-raised-button color="primary" id="start-button" (click)="getClasses()" checked>Enivar</button>
+        <button mat-raised-button color="primary" id="start-button" (click)="getClasses()" checked>Enviar</button>
 
    
   
 
       </mat-card>
+
+      <mat-card style="margin-top: 40px;" *ngIf="classList">
+
+          <h3>Obrigatorias que faltam fazer</h3>
+          <p *ngFor="let c of classList.todo">{{c.nome}}</p>
+  
+        </mat-card>
 
       
       <mat-card style="margin-top: 40px;" *ngIf="classList">
@@ -85,6 +93,14 @@
           <p *ngFor="let c of classList.especificas">{{c.nome}}</p>
   
       </mat-card>
+
+      <mat-card style="margin-top: 40px;" *ngIf="classList">
+
+          <h3>Limitadas Curso Especifico</h3>
+          <p *ngFor="let c of classList.limitadas">{{c.nome}}</p>
+  
+      </mat-card>
+
 
       <mat-card style="margin-top: 40px;" *ngIf="classList">
 

@@ -6,9 +6,8 @@
          web-server/dispatch
 	 json)
 
-(require "../courses-json.rkt" )
-(require "../ufabc-classes.rkt")
-
+(require "../courses-json.rkt"
+         "../ufabc-classes.rkt")
 
 
 
@@ -63,47 +62,53 @@
 
 
 (define (get-user-bi a)
-  (print (hash-ref a 'bi ""))
-  (hash-ref a 'bi' ""))
+  (hash-ref a 'bi ""))
+
+(define (get-user-post-bi a)
+  (hash-ref a 'postBi ""))
 
 
-
-(define (get-user-classes a)
+(define (get-user-classes a id)
   (define usr-classes-hash
     (string->jsexpr
            (hash-ref a 'classes "")))
   (define c (make-course-list
              usr-classes-hash))
-  (define specific (filter-specific c))
-  (define mandatory (filter-bi c))
+  (define to-do
+    (filter-to-do c id))
+  (define limited
+    (filter-lim c id))
+  (define specific
+    (filter-specific c id))
+  (define mandatory
+    (filter-bi c 100))
   (define free (filter-free c mandatory specific))
-
-  
-
   (make-hash (list
               (cons 'especificas
                     (course/hash (get-names specific)))
               (cons 'obrigatorias
                     (course/hash (get-names mandatory)))
+              (cons 'limitadas
+                    (course/hash (get-names limited)))
+              (cons 'todo
+                    (course/hash (get-names to-do)))
               (cons 'livres
                     (course/hash (get-names free))))))
+
+
+
+
 
 
 
 (define (get-course-data req)
   (let ([data/bytes (request-post-data/raw req)])
     (let ([data (bytes->jsexpr data/bytes)])
-      (print (jsexpr->string (get-user-classes data)))
-      (response #:body  (jsexpr->string (get-user-classes data))
+      (define post-bi (get-user-post-bi data))
+      (response #:body  (jsexpr->string (get-user-classes data post-bi))
                 #:mime "application/json"
                 #:headers jhead))))
 
-
-(define (get-courses req)
-  (print req)
-  (response #:body (jsexpr->string courses/result)
-	    #:mime "application/json"
-            #:headers jhead))
 
 
 
@@ -111,10 +116,6 @@
   (string->symbol (format "~a" x)))
 
 
-(define (get-catalog-item req x)
-      (response #:body (jsexpr->string courses/result)
-                #:mime "application/json"
-                #:headers jhead))
 
 
 (define (not-allowed req)
@@ -125,18 +126,9 @@
   (response #:code 404
 	    #:message "Not Found"))
 
-(define (bad-request)
-  (response #:code 400
-            #:message "Bad Request"))
-
-(define (internal-server-error)
-  (response #:code 500
-            #:message "Internal Server Error"))
-
 
 (define-values (go _)
   (dispatch-rules
-   [("courses")  #:method "get" get-courses]
    [("courses")  #:method "post" get-course-data]
    [else not-found]
    ))

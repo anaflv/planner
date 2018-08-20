@@ -31,5 +31,7 @@ export class Customer {
   export interface ClassList {
     especificas: UfabcClass[];
     obrigatorias: UfabcClass[];
-    livres: UfabcClass[];
+    todo: UfabcClass[];
+    limitadas: UfabcClass[];
+
   }
