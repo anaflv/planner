@@ -75,49 +75,6 @@
 
 (define mandatory-bi bct)
 (define mandatory-specific bcc-17)
-(define free '(1))
-
-(define e '("BIK0102-13"
-  "BIR0004-13"
-  "BCS0001-13"
-  "BIL0304-13"
-  "BIM0005-13"
-  "BIN0003-13"
-  "MCZC003-13"
-  "BCJ0208-13"
-  "BCL0306-13"
-  "BCN0404-13"
-  "BCL0307-13"
-  "BCM0506-13"
-  "BCM0505-13"
-  "BCN0402-13"
-  "BIQ0602-13"
-  "BIR0603-13"
-  "NHZ4033-09"
-  "BCN0407-13"
-  "BCJ0205-13"
-  "ESTO002-13"
-  "ESTO008-13"
-  "MCTA009-13"
-  "BCM0505-13"
-  "BCN0405-13"
-  "BIN0406-13"
-  "ESTO005-13"
-  "ESZI003-13"
-  "BCL0308-13"
-  "MCTA006-13"
-  "MCTA018-13"
-  "BIJ0207-15"
-  "MCTA001-13"
-  "MCTB009-13"
-  "BCK0103-15"
-  "BCM0504-15"
-  "BCS0002-15"
-  "ESZI027-17"
-  "MCTA002-17"
-  "BCK0104-15"
-  "MCTA023-17"
-  "MCTA033-15"))
 
 
 
@@ -126,8 +83,6 @@
   (filter (lambda (x)
             (is-in-list-2 x mandatory-bi))
           l))
-
-(get-names (filter-bi e))
 
 
 
