@@ -1,1 +1,0 @@
-("6.12" ("3882d4362b40cada3f21b60528c858f1532b646f" . "389af8a1f4ab0a384c4e3fe0d50b51bcf877bf02") #"C:\\Users\\ana.flavia.araujo\\Desktop\\ufabc\\projeto-pp-2018\\heroku\\ufabc-classes.rkt" (collects #"errortrace" #"errortrace-key.rkt") (collects #"json" #"main.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt") (collects #"racket" #"trace.rkt"))
