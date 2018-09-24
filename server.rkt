@@ -6,8 +6,8 @@
          web-server/dispatch
 	 json)
 
-(require "../courses-json.rkt"
-         "../ufabc-classes.rkt")
+(require "courses-json.rkt"
+         "ufabc-classes.rkt")
 
 
 
