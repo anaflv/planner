@@ -1,4 +1,3 @@
-# projeto-pp-2018
+# UFABC Courses Planner
 
-
-Repositório para a matéria paradigmas da programação UFABC 2018
+This is an app to help UFABC students to plan their course progressions.
