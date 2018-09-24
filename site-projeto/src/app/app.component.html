@@ -54,16 +54,17 @@
         </section>
      
 
-        
 
         <section style="margin-top: 50px;">
             <p>Coloque o texto completo que está no botão "JSON", na sua ficha individual no <a href="https://aluno.ufabc.edu.br/fichas_individuais">portal do aluno.</a>:</p>
-        <mat-form-field class="example-full-width">
-            <textarea  matInput placeholder="Json das materias"  [(ngModel)]="userData.classes" ></textarea>
+          <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>JSON das matérias</mat-label>
+            <textarea  matInput [(ngModel)]="userData.classes"  rows="5"></textarea>
           </mat-form-field>
         </section>
 
-
+        
+        
 
         <button mat-raised-button color="primary" id="start-button" (click)="getClasses()" checked>Enviar</button>
 
