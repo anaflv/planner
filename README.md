@@ -1,6 +1,6 @@
 # UFABC Courses Planner
 
-This is an app to help UFABC students to plan their course progressions.
+This is an app to help UFABC students to plan which classes they should take next.
 This project uses functional programming in Racket.
 
 
